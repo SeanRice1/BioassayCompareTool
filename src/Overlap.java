@@ -24,6 +24,10 @@ public class Overlap {
 			}
 
 		}
-		return results.toString();
+		if (results.size() == 0)
+			return "No Overlaps!";
+		else
+
+			return results.toString();
 	}
 }

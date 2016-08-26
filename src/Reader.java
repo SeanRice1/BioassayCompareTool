@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Reader {
 
-	public static ArrayList<String> listOfBioassays = new ArrayList<>();
-	private static StringBuilder json = new StringBuilder();
+	private ArrayList<String> listOfBioassays = new ArrayList<>();
+	private StringBuilder json = new StringBuilder();
 
-	public static void parseData(String input, String name) {
+	public void parseData(String input, String name) {
 
 		File folder = new File(input);
 
@@ -21,7 +21,7 @@ public class Reader {
 		makeObj(name, listOfBioassays);
 	}
 
-	private static String readFiles(String location) {
+	private String readFiles(String location) {
 
 		String aid = "";
 
@@ -62,7 +62,7 @@ public class Reader {
 
 	}
 
-	private static void makeObj(String name, ArrayList<String> bioassays) {
+	private void makeObj(String name, ArrayList<String> bioassays) {
 		Info.listOfCompounds.add(new RelatedCompoundObject(name, bioassays));
 
 	}

@@ -5,10 +5,9 @@ public class MainView {
 
 	public static void main(String[] args) {
 
-		Reader reader = new Reader();
 		Overlap overlap = new Overlap();
-
-		// test example: C:/Users/Sean Rice/Downloads/F2019-1326/686970.json/ - F2019-1234
+		
+		// test example: C:/Users/Sean Rice/Downloads/F2019-1326/ - F2019-1234
 
 		while (tryAgain) {
 			addNewBioassays();
@@ -32,16 +31,18 @@ public class MainView {
 		String loc1 = scanner.nextLine();
 		System.out.println("Enter the name of the compound that these bioassays belong to");
 		String name1 = scanner.nextLine();
-		Reader.parseData(loc1, name1);
+		Reader reader = new Reader();
+		reader.parseData(loc1, name1);
 
 	}
 
 	public static void getAIDs() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Would you like to get all the bioassay IDs for this compound (Y/N)");
+		System.out.println("Would you like to get the number of bioassay IDs for this compound (Y/N)");
 		String input = scan.nextLine();
 		if (input.equalsIgnoreCase("y")) {
-			System.out.println(Info.listOfCompounds.get(Info.listOfCompounds.size() - 1).getAidList().toString());
+			//System.out.println(Info.listOfCompounds.size());
+			System.out.println(Info.listOfCompounds.get(Info.listOfCompounds.size() - 1).getAidList().size());
 		}
 	}
 
