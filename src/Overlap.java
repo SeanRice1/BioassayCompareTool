@@ -14,9 +14,9 @@ public class Overlap {
 					for (int z = 0; z < arr1.size(); z++) {
 						for (int a = 0; a < arr2.size(); a++) {
 							if (arr1.get(z).equals(arr2.get(a))) {
-								results.add("The Bioassay AID number: " + arr1.get(z) + " is in common in both "
+								results.add("| The Bioassay AID number: " + arr1.get(z) + " is in common in both "
 										+ Info.listOfCompounds.get(x).getName() + " and "
-										+ Info.listOfCompounds.get(y).getName());
+										+ Info.listOfCompounds.get(y).getName()+ " |");
 							}
 						}
 					}

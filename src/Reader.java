@@ -7,18 +7,20 @@ import java.util.ArrayList;
 
 public class Reader {
 
-	private ArrayList<String> listOfBioassays = new ArrayList<>();
+	public ArrayList<String> listOfBioassays = new ArrayList<>();
 	private StringBuilder json = new StringBuilder();
+	private String location;
 
-	public void parseData(String input, String name) {
+	public void parseData(String input) {
 
 		File folder = new File(input);
+		location = folder.getAbsolutePath();
 
 		for (File fileEntry : folder.listFiles()) {
 			listOfBioassays.add(readFiles(fileEntry.getAbsolutePath()));
 		}
 
-		makeObj(name, listOfBioassays);
+		makeObj(listOfBioassays);
 	}
 
 	private String readFiles(String location) {
@@ -34,13 +36,14 @@ public class Reader {
 
 				json.append(temp);
 				json.append(System.lineSeparator());
-				
+
 				/*
-				 * Not actually parsing the JSON because its too hard to parse 
-				 * each entire file and as a result the JSON is being truncated 
-				 * and not using proper syntax. I will find a solution to this eventually 
-				 * but for now, this program only finds and compares id numbers from the 
-				 * JSON files.
+				 * Not actually parsing the JSON because its too hard to parse
+				 * each entire file and as a result the JSON is being truncated
+				 * and not using proper syntax. I will find a solution to this
+				 * eventually but for now, this program only finds and compares
+				 * id numbers from the JSON files for comparing bioassay ID
+				 * numbers.
 				 */
 				if (temp.contains("id")) {
 					count++;
@@ -62,8 +65,11 @@ public class Reader {
 
 	}
 
-	private void makeObj(String name, ArrayList<String> bioassays) {
-		Info.listOfCompounds.add(new RelatedCompoundObject(name, bioassays));
-
+	private void makeObj(ArrayList<String> bioassays) {
+		if (location.contains("F")) {
+			int firstF = location.indexOf('F');
+			String name = location.substring(firstF);
+			Info.listOfCompounds.add(new RelatedCompoundObject(name, bioassays));
+		}
 	}
 }
