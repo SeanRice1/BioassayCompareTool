@@ -25,8 +25,9 @@ public class MainView {
 		}
 	}
 	public static void addNewBioassays() {
-		System.out.println("Consolidate all of the JSON bioassay files into folders named by the "
-				+ "the compound they are show active in, and the put all of the folders into a main folder");
+		System.out.println("Consolidate all of the JSON bioassay files into folders named by "
+				+ "the compound they are show active in, and the put all of the folders into a main folder located in"
+				+ " your downloads folder");
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the location of the main folder");
 		String loc1 = scanner.nextLine();

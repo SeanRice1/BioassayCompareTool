@@ -16,11 +16,13 @@ public class Reader {
 		File folder = new File(input);
 		location = folder.getAbsolutePath();
 
+		
 		for (File fileEntry : folder.listFiles()) {
 			listOfBioassays.add(readFiles(fileEntry.getAbsolutePath()));
 		}
 
 		makeObj(listOfBioassays);
+		
 	}
 
 	private String readFiles(String location) {
@@ -66,10 +68,14 @@ public class Reader {
 	}
 
 	private void makeObj(ArrayList<String> bioassays) {
-		if (location.contains("F")) {
-			int firstF = location.indexOf('F');
-			String name = location.substring(firstF);
-			Info.listOfCompounds.add(new RelatedCompoundObject(name, bioassays));
+		int pos =0;
+		for(int x = 0; x <location.length()-1;x++){
+			char a = location.charAt(x);
+			if(a == '\\'){
+				pos = x;
+			}
 		}
+		String name = location.substring(pos+1);
+		Info.listOfCompounds.add(new RelatedCompoundObject(name, bioassays));
 	}
 }

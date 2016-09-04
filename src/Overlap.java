@@ -40,8 +40,8 @@ public class Overlap {
 										temp + ", " + Info.listOfCompounds.get(x + 1).getName());
 							}
 
-						}
-					}
+						
+					}}
 				}
 			}
 
@@ -49,7 +49,6 @@ public class Overlap {
 		if (results.size() == 0)
 			return "No Overlaps!";
 		else
-
 			return results.toString();
 	}
 }
